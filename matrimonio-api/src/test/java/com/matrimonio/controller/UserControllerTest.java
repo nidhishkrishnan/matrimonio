@@ -57,5 +57,30 @@ public class UserControllerTest extends CommonUtils {
 			.andExpect(jsonPath("$[0].age", is(45)));
 	}
 	
-	
+	@Test
+	public void getAllUserDisplayNamesTest() throws Exception {
+		List<UserProfileDisplayNames> allUserDisplayNames = buildAllUserDisplayNames();
+	    when(profileService.getAllUserDisplayNames()).thenReturn(allUserDisplayNames);
+	    mvc.perform(get("/v1/profile/names")
+			.contentType(MediaType.APPLICATION_JSON).param("loginUserName", "BCD"))
+			.andExpect(status().isOk())
+			.andExpect(jsonPath("$", hasSize(1)));
+	}
+
+	@Test
+	public void filterProfilesTest() throws Exception {
+		List<Profile> allProfiles = buildAllProfiles();
+		FilterProfileRequest filterProfileRequest = buildFilterProfileRequest();
+		byte[] filterProfileRequestContent = toJson(filterProfileRequest);
+	    when(profileService.filterProfiles(anyString(), any())).thenReturn(allProfiles);
+	    mvc.perform(post("/v1/profile/filter")
+			.param("loginUserName", "BCD")
+			.content(filterProfileRequestContent)
+			.contentType(MediaType.APPLICATION_JSON)
+			.accept(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk())
+			.andExpect(jsonPath("$", hasSize(1)))
+			.andExpect(jsonPath("$[0].age", is(45)));
+	}
+
 }
