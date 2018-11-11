@@ -14,10 +14,25 @@ public class FilterProfileRequest {
 	private Boolean upperBound;
 	private Boolean inContact;
 
+	@Valid
+	@InRange(
+			max = 99, 
+			min = 1,
+			message = "start and end compatibility score should be in range from 1% to 99%")
 	private Range compatibilityScore;
 
+	@Valid
+	@InRange(
+			max = 95, 
+			min = 18,
+			message = "start and end age should be in range from 18 to 95")
 	private Range age;
 
+	@Valid
+	@InRange(
+			max = 210, 
+			min = 135,
+			message = "start and end height should be in range from 135cm to 210cm")
 	private Range height;
 
 	public Boolean getHasPhoto() {
