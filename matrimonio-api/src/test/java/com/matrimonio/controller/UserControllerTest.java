@@ -82,5 +82,28 @@ public class UserControllerTest extends CommonUtils {
 			.andExpect(jsonPath("$", hasSize(1)))
 			.andExpect(jsonPath("$[0].age", is(45)));
 	}
-
+	
+	@Test
+    public void thatBadRequestExceptionHappens() throws Exception {
+        FilterProfileRequest filterProfileRequest = buildFilterProfileRequest();
+        filterProfileRequest.setAge(buildRange(1, 2));
+		byte[] filterProfileRequestContent = toJson(filterProfileRequest);
+        mvc.perform(post("/v1/profile/filter")
+    			.param("loginUserName", "BCD")
+    			.content(filterProfileRequestContent)
+    			.contentType(MediaType.APPLICATION_JSON)
+    			.accept(MediaType.APPLICATION_JSON))
+        		.andExpect(status().isBadRequest());
+    }
+	
+	@Test
+    public void thatBadDataRequestExceptionHappens() throws Exception {
+		byte[] filterProfileRequestContent = toJson("{\"inContact\": \"invalidData\"}");
+        mvc.perform(post("/v1/profile/filter")
+    			.param("loginUserName", "BCD")
+    			.content(filterProfileRequestContent)
+    			.contentType(MediaType.APPLICATION_JSON)
+    			.accept(MediaType.APPLICATION_JSON))
+        		.andExpect(status().isBadRequest());
+    }
 }
