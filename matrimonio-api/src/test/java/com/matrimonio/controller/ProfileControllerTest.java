@@ -29,7 +29,7 @@ import com.matrimonio.service.ProfileService;
 import com.matrimonio.util.CommonUtils;
 
 @RunWith(MockitoJUnitRunner.class)
-public class UserControllerTest extends CommonUtils {
+public class ProfileControllerTest extends CommonUtils {
 
 	@Mock
     private ProfileService profileService;
@@ -37,12 +37,12 @@ public class UserControllerTest extends CommonUtils {
 	private MockMvc mvc;
 	
 	@InjectMocks
-	private UserController userController;
+	private ProfileController profileController;
 
 	@Before
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
-		mvc = MockMvcBuilders.standaloneSetup(userController)
+		mvc = MockMvcBuilders.standaloneSetup(profileController)
 				.build();
 	}
 	

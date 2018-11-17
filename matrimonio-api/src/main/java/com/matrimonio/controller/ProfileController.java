@@ -18,11 +18,11 @@ import com.matrimonio.service.ProfileService;
 
 @RestController
 @RequestMapping("v1/profile")
-public class UserController {
+public class ProfileController {
 
 	private ProfileService profileService;
 	
-	public UserController(ProfileService profileService) {
+	public ProfileController(ProfileService profileService) {
 		this.profileService = profileService;
 	}
 	
