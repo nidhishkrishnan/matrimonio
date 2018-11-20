@@ -1,0 +1,35 @@
+{
+  "name": "made-for-each-spa",
+  "version": "1.0.0",
+  "description": "This aplication is for filtering matching profiles",
+  "main": "index.js",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
+  },
+  "author": "NidhishKrishnan",
+  "license": "MIT",
+  "dependencies": {
+    "@angular/cli": "1.6.8",
+    "@angular/compiler-cli": "^4.4.7",
+    "@angular/common": "^4.4.7",
+    "@angular/compiler": "^4.4.7",
+    "@angular/core": "^4.4.7",
+    "@angular/forms": "^4.4.7",
+    "@angular/http": "^4.4.7",
+    "@angular/platform-browser": "^4.4.7",
+    "@angular/platform-browser-dynamic": "^4.4.7",
+    "@angular/router": "^4.4.7",
+    "core-js": "^2.4.1",
+    "rxjs": "^5.4.2",
+    "zone.js": "^0.8.14"
+  },
+  "devDependencies": {
+    "tslint": "^5.7.0",
+    "typescript": "^2.3.4"
+  }
+}
