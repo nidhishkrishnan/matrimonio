@@ -1,0 +1,63 @@
+.back {
+    background: #e2e2e2;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+}
+
+.div-center {
+    width: 25em;
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: auto;
+    padding: 1em 2em;
+    border-bottom: 2px solid #ccc;
+    display: table;
+    min-height: 23em;
+}
+
+div.content {
+    padding-bottom: 40px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.pacman-progress {
+    font-size: 18px;
+    color: black;
+    margin-top: 7%;
+    text-align: center;
+}
+
+.pacman-progress .title {
+    padding-bottom: 10px;
+}
+
+.pacman-progress .image {
+    padding-bottom: 10px;
+    height: 3em;
+    background-position: center;
+}
+
+.pacman-progress .content {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 17px;
+}
+
+.pacman-progress .content .highlight {
+    color: #ed0295;
+    background-color: transparent;
+}
+
+.pacman-progress .pacman-alert-message {
+    font-size: 14px;
+}

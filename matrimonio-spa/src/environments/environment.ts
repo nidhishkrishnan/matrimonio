@@ -6,14 +6,14 @@
 export const environment = {
   production: false,
   endPoints: {
-    question:{
-      list: 'http://localhost:8080/question'
+    getAllUserDisplayNames:{
+      url: 'http://localhost:8080/matrimonio/v1/user/names'
     },
-    answer:{
-      post: 'http://localhost:8080/answer'
+    getAllProfiles:{
+      url: 'http://localhost:8080/matrimonio/v1/profile/list'
     },
     category:{
-      list: 'http://localhost:8080/category'
+      url: 'http://localhost:8080/matrimonio/category'
     }
   }
 };

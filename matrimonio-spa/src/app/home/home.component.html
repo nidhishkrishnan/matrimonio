@@ -1,0 +1,30 @@
+<div class="back">
+    <div class="div-center">
+        <div class="content">
+            <span [hidden]="loader">
+            <h3>User Access</h3>
+            <hr>
+            </span>
+            <div class="pacman-progress" [hidden]="!loader">
+                <loader></loader>
+                <div class="title">
+                    Please Wait...
+                </div>
+                <div class="pacman-alert-message">
+                    Usernames is been loading...
+                </div>
+            </div>
+            <form (ngSubmit)="onSubmit()" [hidden]="loader">
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Username</label>
+                    <ng-select [allowClear]="true" [items]="items" (selected)="selectedUser($event)" (removed)="removedUser($event)" placeholder="Select the user display name">
+                    </ng-select>
+                </div>
+                <hr>
+                <button type="submit" [disabled]="username.length==0" class="btn btn-primary col-md-12">Access</button>
+            </form>
+
+        </div>
+    </div>
+</div>
