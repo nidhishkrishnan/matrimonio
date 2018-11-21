@@ -1,0 +1,7 @@
+server:
+  servlet:
+    context-path: /matrimonio
+spring: 
+  jpa: 
+    hibernate:
+      ddl-auto: update
