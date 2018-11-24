@@ -1,14 +1,14 @@
 export const environment = {
   production: true,
   endPoints: {
-    getAllUserDisplayNames:{
-      url: 'http://localhost:8080/matrimonio/v1/user/names'
+    getAllUserDisplayNames: {
+      url: 'http://localhost:8080/matrimonio/v1/profile/names'
     },
-    getAllProfiles:{
+    getAllProfiles: {
       url: 'http://localhost:8080/matrimonio/v1/profile/list'
     },
-    category:{
-      url: 'http://localhost:8080/matrimonio/category'
+    filterProfiles: {
+      url: 'http://localhost:8080/matrimonio/v1/profile/filter'
     }
   }
 };

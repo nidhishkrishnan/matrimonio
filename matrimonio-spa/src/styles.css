@@ -46,7 +46,7 @@ a:focus {
 }
 
 @media (min-width: 768px) {
-    #page-wrapper {
+    .page-wrapper {
         position: inherit;
         margin: 0 0 0 0;
         min-height: 1200px;
@@ -54,25 +54,22 @@ a:focus {
 }
 
 @media (max-width: 768px) {
-    #page-wrapper {
+    .page-wrapper {
         position: inherit;
         margin: 0 0 0 0px;
         min-height: 1000px;
     }
 }
 
-#page-wrapper {
+.page-wrapper {
+    background: powderblue;
     padding: 0px;
     min-height: 568px;
     position: relative !important;
 }
 
-#page-wrapper {
-    min-height: auto;
-}
-
 .gray-bg {
-    background-color: #e2e2e4;
+    background-color: powderblue;
 }
 
 .wrapper-content {
@@ -114,7 +111,9 @@ h5 {
 
 .panel.panel-default {
     border: none;
-    box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 5px 17px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 5px 17px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0px 5px 17px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
 }
 
@@ -148,9 +147,6 @@ h5 {
     margin-top: 6px;
     margin-bottom: 6px;
 }
-
-
-/****************************************************************************/
 
 .pad-top {
     padding-top: 15px;
@@ -213,9 +209,6 @@ a.text-muted:focus {
     margin-bottom: 0px;
 }
 
-
-/****************************************************************************/
-
 .sidenav {
     margin-top: 50px;
     height: 100%;
@@ -258,4 +251,56 @@ a.text-muted:focus {
     .sidenav a {
         font-size: 18px;
     }
+}
+
+* {
+    outline: none;
+    outline-style: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+}
+
+::-webkit-scrollbar {
+    max-width: 7px;
+    background-color: transparent;
+    max-height: 7px;
+    -webkit-transition: 0.28s ease;
+    transition: 0.28s ease;
+}
+
+::-webkit-scrollbar-thumb {
+    width: 7px;
+    background-color: #a4a4a4;
+    border-radius: 4px;
+}
+
+.mat-progress {
+    font-size: 18px;
+    color: black;
+    margin-top: 7%;
+    text-align: center;
+}
+
+.mat-progress .title {
+    padding-bottom: 10px;
+}
+
+.mat-progress .image {
+    padding-bottom: 10px;
+    height: 3em;
+    background-position: center;
+}
+
+.mat-progress .content {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 17px;
+}
+
+.mat-progress .content .highlight {
+    color: #337ab7;
+    background-color: transparent;
+}
+
+.mat-progress .pacman-alert-message {
+    font-size: 14px;
 }
