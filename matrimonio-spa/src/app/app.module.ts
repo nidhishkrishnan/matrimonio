@@ -1,7 +1,7 @@
-/*import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';*/
+import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
@@ -14,7 +14,7 @@ import { SelectModule } from 'ng2-select';
 import { LoaderComponent } from './shared/loader/loader.component';
 import { Ng5SliderModule } from 'ng5-slider';
 import { RouterModalModule } from 'ng-bootstrap-modal';
-
+import { UiSwitchModule } from 'ngx-toggle-switch';
 
 @NgModule({
   declarations: [
@@ -27,10 +27,14 @@ import { RouterModalModule } from 'ng-bootstrap-modal';
   ],
   imports: [
     Ng5SliderModule,
+    BrowserModule,
+    FormsModule,
     AppRoutingModule,
+    HttpModule,
     SharedModule,
     OrderModule,
     SelectModule,
+    UiSwitchModule
   ],
   providers: [],
   bootstrap: [AppComponent]
