@@ -1,0 +1,31 @@
+.pacman-progress {
+    font-size: 18px;
+    color: black;
+    margin-top: 7%;
+    text-align: center;
+}
+
+.pacman-progress .title {
+    padding-bottom: 10px;
+}
+
+.pacman-progress .image {
+    padding-bottom: 10px;
+    height: 3em;
+    background-position: center;
+}
+
+.pacman-progress .content {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 17px;
+}
+
+.pacman-progress .content .highlight {
+    color: #ed0295;
+    background-color: transparent;
+}
+
+.pacman-progress .pacman-alert-message {
+    font-size: 14px;
+}

@@ -1,0 +1,80 @@
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Clients</a>
+    <a href="#">Contact</a>
+</div>
+<div id="wrapper">
+    <div id="page-wrapper" class="gray-bg">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="container">
+                <div class="row" *ngIf="loader">
+                    <div class="pacman-progress">
+                        <loader></loader>
+                        <div class="title">
+                            Please Wait...
+                        </div>
+                        <div class="pacman-alert-message">
+                            Usernames is been loading...
+                        </div>
+                    </div>
+                </div>
+                <div class="row" *ngIf="!loader">
+                    <div class="col-md-3" *ngFor="let profile of profiles | orderBy: 'compatibilityScore':'reverse'">
+                        <div class="panel panel-default">
+                            <div class="overlay-card">
+                                <img src="{{profile.mainPhoto}}" class="img-rounded center-block" onError="this.src='./assets/images/profile.png'">
+                                <div class="row text-center">
+                                    <h4>{{profile.displayName}}</h4>
+                                    <h5>{{profile.jobTitle}}</h5>
+                                </div>
+                            </div>
+                            <div class="panel-body text-center">
+                                <div class="compatible-score">
+                                    <span class="text-sm text-muted">Compatibility Score</span>
+                                    <span class="score-percent text-lg text-semibold text-main"><b>{{profile.compatibilityScore | percent}}</b></span>
+                                    <div class="progress progress-mini">
+                                        <div [style.width]="profile.compatibilityScore | percent" class="progress-bar"></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <ul class="list-unstyled text-center bord-top pad-top mar-no row">
+                                        <li class="col-xs-4">
+                                            <span class="text-lg text-semibold text-main">{{profile.religion}}</span>
+                                            <p class="text-sm text-muted mar-no">Religion</p>
+                                        </li>
+                                        <li class="col-xs-4">
+                                            <span class="text-lg text-semibold text-main">{{profile.age}}</span>
+                                            <p class="text-sm text-muted mar-no">Age</p>
+                                        </li>
+                                        <li class="col-xs-4">
+                                            <span class="text-lg text-semibold text-main">{{profile.contactsExchanged}}</span>
+                                            <p class="text-sm text-muted mar-no">Contacts</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="row">
+                                    <ul class="list-unstyled text-center bord-top pad-top mar-no row">
+                                        <li class="col-xs-4">
+                                            <span class="text-lg text-semibold text-main">{{profile.city.name}}</span>
+                                            <p class="text-sm text-muted mar-no">City</p>
+                                        </li>
+                                        <li class="col-xs-4">
+                                            <span class="text-lg text-semibold text-main">{{profile.heightInCm}}</span>
+                                            <p class="text-sm text-muted mar-no">Height (cm)</p>
+                                        </li>
+                                        <li class="col-xs-4">
+                                            <span class="text-lg text-semibold text-main">{{profile.favourite | question}}</span>
+                                            <p class="text-sm text-muted mar-no">Favorite</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

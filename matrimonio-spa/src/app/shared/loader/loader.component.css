@@ -1,0 +1,55 @@
+.matrimonio-loader {
+    position: relative;
+    font-size: 8px;
+    margin-bottom: 20px;
+}
+
+.loading-bar {
+    display: inline-block;
+    width: 7px;
+    height: 20px;
+    animation: loading 1.2s ease-in-out infinite;
+    margin-left: 1px;
+}
+
+.loading-bar:nth-child(1) {
+    background-color: #F28DC0;
+    animation-delay: 0;
+}
+
+.loading-bar:nth-child(2) {
+    background-color: #e959A2;
+    animation-delay: 0.09s;
+}
+
+.loading-bar:nth-child(3) {
+    background-color: #e52E8B;
+    animation-delay: .18s;
+}
+
+.loading-bar:nth-child(4) {
+    background-color: #c60065;
+    animation-delay: .27s;
+}
+
+.loading-bar:nth-child(5) {
+    background-color: #B0005A;
+    animation-delay: .36s;
+}
+
+.loading-bar:nth-child(6) {
+    background-color: #9A004E;
+    animation-delay: .45s;
+}
+
+@keyframes loading {
+    0% {
+        transform: scale(1);
+    }
+    20% {
+        transform: scale(1, 1.6);
+    }
+    40% {
+        transform: scale(1);
+    }
+}
