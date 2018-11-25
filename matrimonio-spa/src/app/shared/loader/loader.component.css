@@ -13,32 +13,32 @@
 }
 
 .loading-bar:nth-child(1) {
-    background-color: #F28DC0;
+    background-color: #78cad4;
     animation-delay: 0;
 }
 
 .loading-bar:nth-child(2) {
-    background-color: #e959A2;
+    background-color: #4db3c0;
     animation-delay: 0.09s;
 }
 
 .loading-bar:nth-child(3) {
-    background-color: #e52E8B;
+    background-color: #409ca9;
     animation-delay: .18s;
 }
 
 .loading-bar:nth-child(4) {
-    background-color: #c60065;
+    background-color: #1994a5;
     animation-delay: .27s;
 }
 
 .loading-bar:nth-child(5) {
-    background-color: #B0005A;
+    background-color: #148b9b;
     animation-delay: .36s;
 }
 
 .loading-bar:nth-child(6) {
-    background-color: #9A004E;
+    background-color: #057584;
     animation-delay: .45s;
 }
 

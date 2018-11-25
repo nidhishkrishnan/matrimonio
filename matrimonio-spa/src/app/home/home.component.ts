@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    localStorage.setItem('user', '');
     this.getData();
   }
 
@@ -30,7 +31,6 @@ export class HomeComponent implements OnInit {
       this.items = data;
       this.loader = false;
     }, error => {
-      this.loader = false;
     });
   }
 
@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
 
   public selectedUser(value: any): void {
     this.username = value;
-    localStorage.setItem('user', this.username[0].text);
+    localStorage.setItem('user', this.username.text);
   }
 
   public removedUser(value: any): void {
