@@ -18,5 +18,5 @@ Steps for running the application
 Technology used - Java 8, Spring and H2 DB
 
 Steps for running the application 
- - Navigate to \matrimonio-api and run command mvn install
- - You can run either from elcipse or through maven command using mvn spring-boot:run
+ - Navigate to \matrimonio-api and run command `mvn install`
+ - You can run either from elcipse or through maven command using `mvn spring-boot:run`
