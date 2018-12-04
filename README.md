@@ -33,7 +33,8 @@ Steps for running the application
  
 All the matching profiles for the selected user will be shown
 
-![image](https://user-images.githubusercontent.com/6831336/49014425-1b51a200-f1a6-11e8-81e3-6c4d21be2035.png)
+![image](https://user-images.githubusercontent.com/6831336/49014996-d9296000-f1a7-11e8-893c-27f51cafd4f0.png)
+
 
 ### Profile Filtering Option
 
