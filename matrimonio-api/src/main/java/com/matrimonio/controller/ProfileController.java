@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +35,21 @@ public class ProfileController {
 	@GetMapping("/names")
 	public List<UserProfileDisplayNames> getAllUserDisplayNames() {
 		return this.profileService.getAllUserDisplayNames();
+	}
+	
+	@PostMapping("/{profileId}/toggle")
+	public Profile toggleProfile(@Valid @PathVariable String profileId) {
+		return this.profileService.toggleProfile(profileId);
+	}
+	
+	@PostMapping("/{profileId}/favorite")
+	public Profile addFavorite(@Valid @PathVariable String profileId) {
+		return this.profileService.addFavorite(profileId);
+	}
+	
+	@PostMapping("/{profileId}/contact")
+	public Profile contact(@Valid @PathVariable String profileId) {
+		return this.profileService.contact(profileId);
 	}
 	
 	@PostMapping("/filter")

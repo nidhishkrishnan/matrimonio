@@ -15,6 +15,7 @@ import { LoaderComponent } from './shared/loader/loader.component';
 import { Ng5SliderModule } from 'ng5-slider';
 import { RouterModalModule } from 'ng-bootstrap-modal';
 import { UiSwitchModule } from 'ngx-toggle-switch';
+import { FilterPipe } from './shared/pipes/filter/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { UiSwitchModule } from 'ngx-toggle-switch';
     HeaderComponent,
     ProfileComponent,
     LoaderComponent,
-    QuestionPipe
+    QuestionPipe,
+    FilterPipe
   ],
   imports: [
     Ng5SliderModule,

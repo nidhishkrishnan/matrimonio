@@ -233,3 +233,19 @@
     margin-right: auto;
     width: 27%;
 }
+
+.row .nav-pills {
+    padding-left: 15px;
+    padding-bottom: 15px;
+    padding-right: 15px;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 14px;
+    line-height: 1.42;
+    border-radius: 15px;
+}

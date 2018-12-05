@@ -29,6 +29,9 @@ public class Profile implements Serializable {
 	@Column(name = "height_in_cm")
 	public Integer heightInCm;
 
+	@Column(name = "hidden")
+	public Boolean hidden;
+
 	@Embedded
 	public City city;
 
@@ -125,6 +128,14 @@ public class Profile implements Serializable {
 
 	public void setReligion(String religion) {
 		this.religion = religion;
+	}
+
+	public Boolean getHidden() {
+		return hidden;
+	}
+
+	public void setHidden(Boolean hidden) {
+		this.hidden = hidden;
 	}
 
 	public Profile() {

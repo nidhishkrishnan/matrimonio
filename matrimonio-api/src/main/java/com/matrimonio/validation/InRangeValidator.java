@@ -21,6 +21,6 @@ public class InRangeValidator implements ConstraintValidator<InRange, Range> {
 
 	@Override
 	public boolean isValid(Range value, ConstraintValidatorContext context) {
-		return value == null || (value.getStart() >= this.min && value.getEnd() < this.max && value.getEnd() > this.min);
+		return value == null || (value.getStart() >= this.min && value.getEnd() <= this.max && value.getEnd() > this.min);
 	}
 }

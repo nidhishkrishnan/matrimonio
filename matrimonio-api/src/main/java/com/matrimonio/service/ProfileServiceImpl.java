@@ -20,6 +20,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Service;
 
@@ -157,5 +158,32 @@ public class ProfileServiceImpl implements ProfileService {
 		} else {
 			return criteriaBuilder.between(criteriaBuilder.toDouble(path), Double.valueOf(range.getStart())/100, Double.valueOf(range.getEnd())/100);
 		}
+	}
+
+	@Override
+	public Profile toggleProfile(@Valid String profileId) {
+		return profileRepository.findById(profileId).map(profile -> {
+			if(!profile.getHidden()) {
+				profile.setFavourite(false);
+			}
+			profile.setHidden(!profile.getHidden());
+			return profileRepository.save(profile);
+		}).orElseThrow(() -> new RuntimeException("Profile not found"));
+	}
+	
+	@Override
+	public Profile addFavorite(@Valid String profileId) {
+		return profileRepository.findById(profileId).map(profile -> {
+			profile.setFavourite(!profile.getFavourite());
+			return profileRepository.save(profile);
+		}).orElseThrow(() -> new RuntimeException("Profile not found"));
+	}
+	
+	@Override
+	public Profile contact(@Valid String profileId) {
+		return profileRepository.findById(profileId).map(profile -> {
+			profile.setContactsExchanged(profile.getContactsExchanged()+1);
+			return profileRepository.save(profile);
+		}).orElseThrow(() -> new RuntimeException("Profile not found"));
 	}
 }

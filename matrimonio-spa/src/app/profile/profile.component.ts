@@ -73,6 +73,41 @@ export class ProfileComponent implements OnInit {
     this.executeProfileFiltering({});
   }
 
+  hiddenTab = false;
+
+  toggleProfile(profile) {
+    this.loader = true;
+    let url = environment.endPoints.profile.url+"/"+profile.displayName+"/toggle";
+    this.http.post(url, {}, {}).subscribe(changedProfile => {
+      this.filterProfiles();
+      this.loader = false;
+    }, error => {
+      this.loader = false;
+    });
+  }
+
+  addFavorite(profile) {
+    this.loader = true;
+    let url = environment.endPoints.profile.url+"/"+profile.displayName+"/favorite";
+    this.http.post(url, {}, {}).subscribe(changedProfile => {
+      this.filterProfiles();
+      this.loader = false;
+    }, error => {
+      this.loader = false;
+    });
+  }
+
+  addSmile(profile) {
+  //  this.loader = true;
+    let url = environment.endPoints.profile.url+"/"+profile.displayName+"/contact";
+    this.http.post(url, {}, {}).subscribe(changedProfile => {
+      this.filterProfiles();
+     // this.loader = false;
+    }, error => {
+     // this.loader = false;
+    });
+  }
+
   public filterProfiles(): void {
     this.noResultsFound = false;
     let allFilters = this.filters;
@@ -109,7 +144,7 @@ export class ProfileComponent implements OnInit {
   }
 
   private executeProfileFiltering(filteringValues): void {
-    this.loader = true;
+   // this.loader = true;
     let url = environment.endPoints.filterProfiles.url;
     let loginUserName = localStorage.getItem('user');
     let params = new HttpParams().set("loginUserName", loginUserName);
@@ -121,9 +156,9 @@ export class ProfileComponent implements OnInit {
     this.http.post(url, filteringValues, httpOptions).subscribe(data => {
       this.profiles = data;
       this.noResultsFound = this.profiles.length === 0 ? true: false;
-      this.loader = false;
+    //  this.loader = false;
     }, error => {
-      this.loader = false;
+     // this.loader = false;
     });
   }
 

@@ -9,38 +9,37 @@
                 <div class="title">
                     <span class="filter-label">Distance</span>
                 </div>
-                <ng-select [(ngModel)]="filters.distance" [allowClear]="true" [items]="distanceItems" placeholder="Select distance">
+                <ng-select [(ngModel)]="filters.distance" (ngModelChange)="filterProfiles()" [allowClear]="true" [items]="distanceItems" placeholder="Select distance">
                 </ng-select>
             </div>
             <div class="theme-box">
                 <span class="slider-label filter-label">Compatibility</span>
-                <ng5-slider [(value)]="filters.compatibility.min" [(highValue)]="filters.compatibility.max" [options]="filters.compatibility.options"></ng5-slider>
+                <ng5-slider [(value)]="filters.compatibility.min" (userChangeEnd)="filterProfiles()" [(highValue)]="filters.compatibility.max" [options]="filters.compatibility.options"></ng5-slider>
             </div>
             <div class="theme-box">
                 <span class="slider-label filter-label">Age</span>
-                <ng5-slider [(value)]="filters.age.min" [(highValue)]="filters.age.max" [options]="filters.age.options"></ng5-slider>
+                <ng5-slider [(value)]="filters.age.min" (userChangeEnd)="filterProfiles()" [(highValue)]="filters.age.max" [options]="filters.age.options"></ng5-slider>
             </div>
             <div class="theme-box">
                 <span class="slider-label filter-label">Height</span>
-                <ng5-slider [(value)]="filters.height.min" [(highValue)]="filters.height.max" [options]="filters.height.options"></ng5-slider>
+                <ng5-slider [(value)]="filters.height.min" (userChangeEnd)="filterProfiles()" [(highValue)]="filters.height.max" [options]="filters.height.options"></ng5-slider>
             </div>
 
             <div class="theme-box switch">
-                <ui-switch [(ngModel)]="filters.hasPhoto" size="small" color="#0db9f0" switchColor="#fcfcfc" defaultBoColor="#0db9f0"></ui-switch>
+                <ui-switch [(ngModel)]="filters.hasPhoto" (change)="filterProfiles()" size="small" color="#0db9f0" switchColor="#fcfcfc" defaultBoColor="#0db9f0"></ui-switch>
                 <span class="switch-label">Has Photo</span>
             </div>
             <div class="theme-box switch">
-                <ui-switch [(ngModel)]="filters.inContact" size="small" color="#0db9f0" switchColor="#fcfcfc" defaultBoColor="#0db9f0"></ui-switch>
+                <ui-switch [(ngModel)]="filters.inContact" (change)="filterProfiles()" size="small" color="#0db9f0" switchColor="#fcfcfc" defaultBoColor="#0db9f0"></ui-switch>
                 <span class="switch-label">In contact</span>
             </div>
             <div class="theme-box switch">
-                <ui-switch [(ngModel)]="filters.favourite" size="small" color="#0db9f0" switchColor="#fcfcfc" defaultBoColor="#0db9f0"></ui-switch>
+                <ui-switch [(ngModel)]="filters.favourite" (change)="filterProfiles()" size="small" color="#0db9f0" switchColor="#fcfcfc" defaultBoColor="#0db9f0"></ui-switch>
                 <span class="switch-label">Favourite</span>
             </div>
         </div>
         <div class="theme-box filter-button">
-            <button type="submit" (click)="filterProfiles()" class="btn btn-primary btn-submit col-sm-6">Filter</button>
-            <button type="reset" (click)="resetValues()" class="btn btn-default col-sm-6">Reset</button>
+            <button type="reset" (click)="resetValues()" class="btn btn-default col-sm-12">Reset</button>
         </div>
     </div>
     <div id="wrapper">
@@ -59,59 +58,90 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row" *ngIf="!loader">
-                        <div class="col-md-3" *ngFor="let profile of profiles | orderBy: 'compatibilityScore':'reverse'">
-                            <div class="panel panel-default">
-                                <div class="overlay-card">
-                                    <img src="{{profile.mainPhoto}}" class="img-rounded center-block" onError="this.src='./assets/images/profile.png'">
-                                    <div class="row text-center">
-                                        <h4>{{profile.displayName}}</h4>
-                                        <h5>{{profile.jobTitle}}</h5>
-                                    </div>
-                                </div>
-                                <div class="panel-body text-center">
-                                    <div class="compatible-score">
-                                        <span class="text-sm text-muted">Compatibility Score</span>
-                                        <span class="score-percent text-lg text-semibold text-main"><b>{{profile.compatibilityScore | percent}}</b></span>
-                                        <div class="progress progress-mini">
-                                            <div [style.width]="profile.compatibilityScore | percent" class="progress-bar"></div>
+
+                    <div id="tabs" *ngIf="!loader">
+                        <div class="row col-md-12">
+                            <ul class="nav nav-pills">
+                                <li class="nav-item" [ngClass]="{ 'active':!hiddenTab}">
+                                    <a class="nav-link active" (click)="hiddenTab = false" data-toggle="tab">Visible</a>
+                                </li>
+                                <li class="nav-item" [ngClass]="{ 'active':hiddenTab}">
+                                    <a class="nav-link" data-toggle="tab" (click)="hiddenTab = true">Hidden</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="row col-md-12">
+                            <div class="col-md-3" *ngFor="let profile of profiles | filter : hiddenTab | orderBy: 'compatibilityScore':'reverse'">
+                                <div class="panel panel-default">
+                                    <div class="overlay-card">
+                                        <img src="{{profile.mainPhoto}}" class="img-rounded center-block" onError="this.src='./assets/images/profile.png'">
+                                        <div class="row text-center">
+                                            <h4>{{profile.displayName}}</h4>
+                                            <h5>{{profile.jobTitle}}</h5>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <ul class="list-unstyled text-center bord-top pad-top mar-no row">
-                                            <li class="col-xs-4">
-                                                <span class="text-lg text-semibold text-main">{{profile.religion}}</span>
-                                                <p class="text-sm text-muted mar-no">Religion</p>
-                                            </li>
-                                            <li class="col-xs-4">
-                                                <span class="text-lg text-semibold text-main">{{profile.age}}</span>
-                                                <p class="text-sm text-muted mar-no">Age</p>
-                                            </li>
-                                            <li class="col-xs-4">
-                                                <span class="text-lg text-semibold text-main">{{profile.contactsExchanged}}</span>
-                                                <p class="text-sm text-muted mar-no">Contacts</p>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="row">
-                                        <ul class="list-unstyled text-center bord-top pad-top mar-no row">
-                                            <li class="col-xs-4">
-                                                <span class="text-lg text-semibold text-main">{{profile.city.name}}</span>
-                                                <p class="text-sm text-muted mar-no">City</p>
-                                            </li>
-                                            <li class="col-xs-4">
-                                                <span class="text-lg text-semibold text-main">{{profile.heightInCm}}</span>
-                                                <p class="text-sm text-muted mar-no">Height (cm)</p>
-                                            </li>
-                                            <li class="col-xs-4">
-                                                <span class="text-lg text-semibold text-main">{{profile.favourite | question}}</span>
-                                                <p class="text-sm text-muted mar-no">Favorite</p>
-                                            </li>
-                                        </ul>
+                                    <div class="panel-body text-center">
+                                        <div class="compatible-score">
+                                            <span class="text-sm text-muted">Compatibility Score</span>
+                                            <span class="score-percent text-lg text-semibold text-main"><b>{{profile.compatibilityScore | percent}}</b></span>
+                                            <div class="progress progress-mini">
+                                                <div [style.width]="profile.compatibilityScore | percent" class="progress-bar"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <ul class="list-unstyled text-center bord-top pad-top mar-no row">
+                                                <li class="col-xs-4">
+                                                    <span class="text-lg text-semibold text-main">{{profile.religion}}</span>
+                                                    <p class="text-sm text-muted mar-no">Religion</p>
+                                                </li>
+                                                <li class="col-xs-4">
+                                                    <span class="text-lg text-semibold text-main">{{profile.age}}</span>
+                                                    <p class="text-sm text-muted mar-no">Age</p>
+                                                </li>
+                                                <li class="col-xs-4">
+                                                    <span class="text-lg text-semibold text-main">{{profile.contactsExchanged}}</span>
+                                                    <p class="text-sm text-muted mar-no">Contacts</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="row">
+                                            <ul class="list-unstyled text-center bord-top pad-top mar-no row">
+                                                <li class="col-xs-4">
+                                                    <span class="text-lg text-semibold text-main">{{profile.city.name}}</span>
+                                                    <p class="text-sm text-muted mar-no">City</p>
+                                                </li>
+                                                <li class="col-xs-4">
+                                                    <span class="text-lg text-semibold text-main">{{profile.heightInCm}}</span>
+                                                    <p class="text-sm text-muted mar-no">Height (cm)</p>
+                                                </li>
+                                                <li class="col-xs-4">
+                                                    <span class="text-lg text-semibold text-main">{{profile.favourite | question}}</span>
+                                                    <p class="text-sm text-muted mar-no">Favorite</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="row">
+                                            <ul class="list-unstyled text-center bord-top pad-top mar-no row">
+                                                <li class="col-xs-4">
+                                                    <button *ngIf="profile.hidden" class="btn btn-primary" (click)="toggleProfile(profile)">UnHide</button>
+                                                    <button *ngIf="!profile.hidden" class="btn btn-primary" (click)="toggleProfile(profile)">Hide</button>
+                                                </li>
+                                                <li class="col-xs-4">
+                                                    <button *ngIf="profile.favourite && !profile.hidden" class="btn btn-danger btn-circle" (click)="addFavorite(profile)"> <i class="glyphicon glyphicon-heart"></i></button>
+                                                    <button *ngIf="!profile.favourite && !profile.hidden" class="btn btn-primary btn-circle" (click)="addFavorite(profile)"> <i class="glyphicon glyphicon-heart"></i></button>
+                                                </li>
+                                                <li class="col-xs-4">
+                                                    <button class="btn btn-success" (click)="addSmile(profile)"> Smile</button>
+
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

@@ -9,6 +9,9 @@ export const environment = {
     },
     filterProfiles: {
       url: 'http://localhost:8080/matrimonio/v1/profile/filter'
+    },
+    profile: {
+      url: 'http://localhost:8080/matrimonio/v1/profile'
     }
   }
 };
